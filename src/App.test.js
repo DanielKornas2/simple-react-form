@@ -56,3 +56,7 @@ describe('check input values onChange', () => {
     expect(wrapper.state().accept).toEqual(true);
   });
 });
+
+describe('check form validation', () => {
+
+});

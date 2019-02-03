@@ -9,6 +9,7 @@ class App extends Component {
     password: "",
     accept: false,
     message: '',
+    formSent: false,
 
     errors: {
       username: false,
@@ -57,6 +58,7 @@ class App extends Component {
         password: "",
         accept: false,
         message: 'Formularz został wysłany!',
+        formSent: true,
     
         errors: {
           username: false,
@@ -120,6 +122,7 @@ class App extends Component {
       setTimeout(() => 
       this.setState({
         message: '',
+        formSent: false,
       }), 4000)
     }
   }
