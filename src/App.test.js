@@ -16,17 +16,19 @@ describe('check render App and if form elements exist', () => {
 
 describe('check input values onChange', () => {
   const wrapper = mount(<App />);
-  const testValue = 'Text';
+  const testValue = 'Texttexttext';
+  const testEmail = 'random@email.com';
   const inputUsername = wrapper.find('input[name="username"]');
   const inputEmail = wrapper.find('input[name="email"]');
   const inputPassword = wrapper.find('input[name="password"]');
   const inputAccept = wrapper.find('input[name="accept"]');
+  const form = wrapper.find('form');
 
   beforeEach(() => { 
     inputUsername.instance().value = testValue;
     inputUsername.simulate('change');
 
-    inputEmail.instance().value = testValue;
+    inputEmail.instance().value = testEmail;
     inputEmail.simulate('change');
 
     inputPassword.instance().value = testValue;
@@ -34,18 +36,22 @@ describe('check input values onChange', () => {
 
     inputAccept.instance().checked= true;
     inputAccept.simulate('change');
-    
+ });
+
+ // Symuluję wysłanie formularza po tym, jak wypełnię formularz powyżej
+  afterEach(() => {
+    form.simulate('submit');
   });
 
   test('check input username', () => {
     expect(wrapper.state().username).toEqual(testValue);
-    expect(wrapper.state().email).toEqual(testValue);
+    expect(wrapper.state().email).toEqual(testEmail);
     expect(wrapper.state().password).toEqual(testValue);
     expect(wrapper.state().accept).toEqual(true);
   });
 
   test('check input email', () => {
-    expect(wrapper.state().email).toEqual(testValue);
+    expect(wrapper.state().email).toEqual(testEmail);
   });
 
   test('check input password', () => {
@@ -55,8 +61,9 @@ describe('check input values onChange', () => {
   test('check input checkbox', () => {
     expect(wrapper.state().accept).toEqual(true);
   });
-});
 
-describe('check form validation', () => {
-
+  // Validacja - sprawdzam, czy po wysłaniu formularza wartość w stanie została zmieniona = spełniłem warunki
+  test('check form validation', () => {
+    expect(wrapper.state().formSent).toEqual(true);
+  });
 });
