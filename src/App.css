@@ -9,6 +9,27 @@ form {
   color: #484242;
 }
 
+label {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+label[for="accept"] {
+  justify-content: start;
+}
+
+input {
+  width: 180px;
+  border: 1px solid #ededed;
+}
+
+input[type="checkbox"] {
+  width: auto;
+  margin-left: 0;
+}
+
 button {
   align-self: flex-start;
   width: 80px;
@@ -22,7 +43,7 @@ button {
 
 span {
   align-self: flex-start;
-  font-size: 12px;
+  font-size: 10px;
   color: #c57979;
 }
 
@@ -30,6 +51,7 @@ h4 {
   display: inline-block;
   width: 100%;
   text-align: center;
-  font-size: 10px;
+  font-size: 12px;
+  font-weight: 400;
   color: #43854c;
 }
