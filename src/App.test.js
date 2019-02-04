@@ -7,14 +7,14 @@ describe('check render App and if form elements exist', () => {
     shallow(<App />);
   });
 
-  test('includes form', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find('input')).toHaveLength(4);
-    expect(wrapper.find('button')).toHaveLength(1);
+  test('does form include 4 inputs and button?', () => {
+    const app = shallow(<App />);
+    expect(app.find('input')).toHaveLength(4);
+    expect(app.find('button')).toHaveLength(1);
   });
 });
 
-describe('check input values onChange', () => {
+describe('check correct input values', () => {
   const wrapper = mount(<App />);
   const testValue = 'Texttexttext';
   const testEmail = 'random@email.com';
@@ -38,31 +38,28 @@ describe('check input values onChange', () => {
     inputAccept.simulate('change');
  });
 
- // Symuluję wysłanie formularza po tym, jak wypełnię formularz powyżej
+  // Simulate submit form after previous onChange simulations
   afterEach(() => {
     form.simulate('submit');
   });
 
-  test('check input username', () => {
+  test('check input username - if onChange works in username input', () => {
     expect(wrapper.state().username).toEqual(testValue);
-    expect(wrapper.state().email).toEqual(testEmail);
-    expect(wrapper.state().password).toEqual(testValue);
-    expect(wrapper.state().accept).toEqual(true);
   });
 
-  test('check input email', () => {
+  test('check input email  - if onChange works in email input', () => {
     expect(wrapper.state().email).toEqual(testEmail);
   });
 
-  test('check input password', () => {
+  test('check input password - if onChange works in password input', () => {
     expect(wrapper.state().password).toEqual(testValue);
   });
 
-  test('check input checkbox', () => {
+  test('check input checkbox - if onChange works in checkbox input', () => {
     expect(wrapper.state().accept).toEqual(true);
   });
 
-  // Validacja - sprawdzam, czy po wysłaniu formularza wartość w stanie została zmieniona = spełniłem warunki
+  // If form has been sent and validation in each input is correct - formSent property in state should be true
   test('check form validation', () => {
     expect(wrapper.state().formSent).toEqual(true);
   });
