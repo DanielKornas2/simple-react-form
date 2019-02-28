@@ -55,3 +55,9 @@ h4 {
   font-weight: 400;
   color: #43854c;
 }
+
+ul {
+  text-align: center;
+  list-style-type: none;
+  font-size: 10px;
+}
