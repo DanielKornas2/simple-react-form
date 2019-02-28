@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from "react-redux";
 
 const UserMessage = (props) => {
-    const [clickValue, clickHandler] = useState(false);
+    const [clickValue, clickHandler] = useState("nie");
 
     useEffect(()=>{
 
@@ -14,7 +14,7 @@ const UserMessage = (props) => {
         <ul>
         <li><strong>Imię:</strong> {props.userState.username}</li>
         <li><strong>Email:</strong> {props.userState.email}</li>
-        <li onClick={()=> clickHandler(clickValue===true)}>Click me</li>
+        <li onClick={()=> clickHandler(clickValue==="tak")}>{this.state.clickValue}</li>
         </ul>
     )
 }

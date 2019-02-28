@@ -128,7 +128,7 @@ class App extends Component {
       this.setState({
         message: '',
         formSent: false,
-      }), 4000)
+      }), 10000)
     }
   }
 
