@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import { connect } from "react-redux";
+import { updateData } from "./store/actions";
+
 class App extends Component {
 
   state = {
@@ -67,6 +70,8 @@ class App extends Component {
           accept: false,
         }
       }) 
+      // Do komponentu podpiąłem redux. W lokalnym stanie robię walidację itp i te zwalidowane dane już poprawne przekazuję do store'a. Wywołuję akcję i przekazuję do niej aktualny stan, mogę tam przekazać cokolwiek i to się zapisze w store
+      this.props.updateData(this.state);
     } else {
       this.setState({
         errors: {
@@ -113,7 +118,6 @@ class App extends Component {
       accept,
       correct
     })
-
   }
 
   componentDidUpdate(){
@@ -165,4 +169,14 @@ class App extends Component {
   }
 }
 
-export default App;
+// tu nie potrzebuję ale mogę użyć mapStateToProps i potem to przekazać zamiast null
+// const mapStateToProps = state => {
+//   return {
+//       myStore: state.myStore
+//   };
+// };
+
+const mapDispatchToProps = {updateData};
+
+
+export default connect(null, mapDispatchToProps)(App);
