@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import UserMessage from './UserMessage'
 
 import { connect } from "react-redux";
 import { updateData } from "./store/actions";
@@ -164,6 +165,7 @@ class App extends Component {
           <button>Wyślij</button>
         </form>
         {this.state.message && <h4>{this.state.message}</h4>}
+        {this.state.formSent && <UserMessage />}
       </div>
     );
   }
